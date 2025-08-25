@@ -69,7 +69,6 @@ const Index = () => {
           </p>
         </div>
 
-        href="/markets/0xPool123456" 
         {/* Display the list of pools */}
         <div className="grid grid-cols-4 gap-2 font-medium border-b pb-2">
           <div>Token 0</div>
