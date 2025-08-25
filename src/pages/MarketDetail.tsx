@@ -12,6 +12,10 @@ import { NearbyStat } from '@/components/market/NearbyStat';
 import { LadderTable } from '@/components/market/LadderTable';
 import { CollateralCards } from '@/components/market/CollateralCards';
 import { HeatmapBar } from '@/components/market/HeatmapBar';
+// import DepositPanel from '@/components/DepositPanel';
+import { mockMarket } from '../../lib/mocks';
+import DepositPanel from '@/components/DepositPanel';
+import { Dialog, DialogTrigger, DialogContent, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 
 const MarketDetail = () => {
   const { poolAddress } = useParams<{ poolAddress: string }>();
@@ -96,6 +100,23 @@ const MarketDetail = () => {
             {poolDetail.token0.symbol}/{poolDetail.token1.symbol} Market
           </h1>
         </div>
+
+        {/* Add Liquidity Button and Modal */}
+        <Dialog>
+          <DialogTrigger asChild>
+            <Button variant="default">Add Liquidity</Button>
+          </DialogTrigger>
+          <DialogContent className="max-w-4xl">
+            <DialogTitle>Add Liquidity</DialogTitle>
+            <DialogDescription>
+              Select a token and amount to add liquidity.
+            </DialogDescription>
+            <div className="grid md:grid-cols-2 gap-4">
+              <DepositPanel market={mockMarket} side="token0" />
+              <DepositPanel market={mockMarket} side="token1" />
+            </div>
+          </DialogContent>
+        </Dialog>
 
         {/* Market Header */}
         <MarketHeader poolDetail={poolDetail} />
