@@ -24,7 +24,11 @@ export function LadderTable({ poolDetail, unit, window }: LadderTableProps) {
   // Separate chunks into above and below current price
   const chunksWithPrices = poolDetail.chunks.map(chunk => ({
     ...chunk,
-    strikePrice: priceFromTick(chunk.strike, poolDetail.token0.decimals, poolDetail.token1.decimals)
+    strikePrice: priceFromTick(
+      Number(chunk.strike),
+      poolDetail.token0.decimals,
+      poolDetail.token1.decimals
+    )
   }));
 
   const aboveChunks = chunksWithPrices
@@ -55,6 +59,12 @@ export function LadderTable({ poolDetail, unit, window }: LadderTableProps) {
       <p>No zones {type} current price</p>
     </div>
   );
+
+  console.log('poolDetail:', poolDetail);
+  console.log('currentPrice:', currentPrice);
+  console.log('chunksWithPrices:', chunksWithPrices);
+  console.log('aboveChunks:', aboveChunks);
+  console.log('belowChunks:', belowChunks);
 
   return (
     <div className="space-y-4">

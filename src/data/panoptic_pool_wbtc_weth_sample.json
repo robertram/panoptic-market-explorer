@@ -1,0 +1,77 @@
+{
+  "panopticPool": {
+    "id": "0x00000000000100921465982d28b37d2006e87fc",
+    "feeTier": "3000",
+    "token0": {
+      "id": "0x2260fac5e5542a773aa44fbcfefd7c193bc2c599",
+      "name": "Wrapped BTC",
+      "symbol": "WBTC",
+      "decimals": "8"
+    },
+    "token1": {
+      "id": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": "18"
+    },
+    "collateral0": {
+      "id": "0xb310c6f625f519da965c587e22ff6ecb49809ed09",
+      "token": {
+        "symbol": "WBTC",
+        "decimals": "8"
+      },
+      "totalAssets": "760708942",
+      "totalShares": "74798258714992"
+    },
+    "collateral1": {
+      "id": "0x1f8d600a0211dd76a8c1ac6065bc0816afd118ef",
+      "token": {
+        "symbol": "WETH",
+        "decimals": "18"
+      },
+      "totalAssets": "179496608855755003574",
+      "totalShares": "17576676480897053102684927"
+    },
+    "underlyingPool": {
+      "id": "0xcbcdf9626bc03e24f779434178a73a0b4bad62ed",
+      "liquidity": "85961447855911187",
+      "tick": "262274",
+      "tickLastUpdateTimestamp": "23219585",
+      "token0": {
+        "decimals": "8"
+      },
+      "token0Price": "0.04074899743913695705658644277109704",
+      "token1": {
+        "decimals": "18"
+      },
+      "token1Price": "24.540481063211637361195869310880341",
+      "totalValueLockedUSD": "361082513.75810594183742645004"
+    },
+    "chunks": [
+      {
+        "id": "chunk-0",
+        "longCounts": "0",
+        "netLiquidity": "22907091533213",
+        "shortCounts": "1"
+      },
+      {
+        "id": "chunk-1",
+        "longCounts": "0",
+        "netLiquidity": "5959763443974",
+        "shortCounts": "1"
+      },
+      {
+        "id": "chunk-2",
+        "longCounts": "0",
+        "netLiquidity": "0",
+        "shortCounts": "0"
+      },
+      {
+        "id": "chunk-3",
+        "longCounts": "0",
+        "netLiquidity": "0",
+        "shortCounts": "0"
+      }
+    ]
+  }
+}

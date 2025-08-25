@@ -1,4 +1,38 @@
 import { PanopticPoolDetail } from '@/types/market';
+import { useState, useEffect } from 'react';
+import { gqlFetch } from '../../lib/graphql';
+
+const QUERY = `
+query PoolDetail($id: ID!) {
+  panopticPool(id: $id) {
+    id
+    feeTier
+    token0 { symbol decimals name id }
+    token1 { symbol decimals name id }
+    underlyingPool {
+      id
+      tick
+      token0 { decimals }
+      token1 { decimals }
+      token0Price
+      token1Price
+      totalValueLockedUSD
+      liquidity
+      tickLastUpdateTimestamp
+    }
+    collateral0 { id token { symbol decimals } totalShares totalAssets }
+    collateral1 { id token { symbol decimals } totalShares totalAssets }
+    chunks(first: 50, orderBy: netLiquidity, orderDirection: desc) {
+      id
+      netLiquidity
+      longCounts
+      shortCounts
+      tickLower
+      tickUpper
+      strike
+    }
+  }
+}`;
 
 export const mockDetail: PanopticPoolDetail = {
   id: "0xPool123456",
@@ -134,12 +168,28 @@ export const mockDetail: PanopticPoolDetail = {
   bundle: { ethPriceUSD: "2600" }
 };
 
-// Hook to simulate data fetching
 export function usePoolDetail(poolAddress: string) {
-  // In production, this would be a real API call
-  return {
-    data: mockDetail,
-    loading: false,
-    error: null
-  };
+  const [data, setData] = useState<PanopticPoolDetail | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const result = await gqlFetch<{ panopticPool: PanopticPoolDetail }>(QUERY, { id: poolAddress.toLowerCase() });
+        console.log('result', result.panopticPool);
+        
+         setData(result.panopticPool);
+        //setData(mockDetail);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, [poolAddress]);
+
+  return { data, loading, error };
 }

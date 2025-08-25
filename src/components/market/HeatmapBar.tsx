@@ -9,13 +9,16 @@ interface HeatmapBarProps {
 }
 
 export function HeatmapBar({ poolDetail, window, className }: HeatmapBarProps) {
+
+  console.log('poolDetail', poolDetail);
+  // Ensure the data structure matches the sample data
   const currentPrice = poolDetail.underlyingPool.tick 
     ? priceFromTick(
         poolDetail.underlyingPool.tick,
         poolDetail.token0.decimals,
         poolDetail.token1.decimals
       )
-    : 0;
+    : Number(poolDetail.underlyingPool.token1Price);
 
   if (!currentPrice) return null;
 
@@ -25,7 +28,7 @@ export function HeatmapBar({ poolDetail, window, className }: HeatmapBarProps) {
   const maxPrice = currentPrice * (1 + range);
   const priceStep = (maxPrice - minPrice) / 50; // 50 segments
 
-  // Generate segments
+  // Adjust the segment generation to match the sample data structure
   const segments = Array.from({ length: 50 }, (_, i) => {
     const segmentPrice = minPrice + (i * priceStep);
     
