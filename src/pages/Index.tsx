@@ -68,6 +68,7 @@ const Index = () => {
             Advanced DeFi market visualization and liquidity analysis
           </p>
         </div>
+        
 
         {/* Display the list of pools */}
         <div className="grid grid-cols-4 gap-2 font-medium border-b pb-2">
