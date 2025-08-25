@@ -2,7 +2,7 @@
 
 ## Project info
 
-**URL**: [Your Project URL]
+**URL**: [[Your Project URL]](https://panoptic-market-explorer.vercel.app/)
 
 ## Run the project
 
